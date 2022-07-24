@@ -1,0 +1,28 @@
+^E:\HOMEWORK\2022HOL01\FYP\FLUTTER\STUDENTAPPGRAPH\BUILD\WINDOWS\CMAKEFILES\C637DACF2E2E1C443C519E38F245AE2F\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"E:\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=E:\flutter PROJECT_DIR=E:\homework\2022hol01\fyp\flutter\studentappgraph FLUTTER_ROOT=E:\flutter FLUTTER_EPHEMERAL_DIR=E:\homework\2022hol01\fyp\flutter\studentappgraph\windows\flutter\ephemeral PROJECT_DIR=E:\homework\2022hol01\fyp\flutter\studentappgraph FLUTTER_TARGET=E:\homework\2022hol01\fyp\flutter\studentappgraph\lib\main.dart DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=E:\homework\2022hol01\fyp\flutter\studentappgraph\.dart_tool\package_config.json E:/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^E:\HOMEWORK\2022HOL01\FYP\FLUTTER\STUDENTAPPGRAPH\BUILD\WINDOWS\CMAKEFILES\F1177D9CAC3A863E2D3C119BD3982E5F\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^E:\HOMEWORK\2022HOL01\FYP\FLUTTER\STUDENTAPPGRAPH\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"E:\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SE:/homework/2022hol01/fyp/flutter/studentappgraph/windows -BE:/homework/2022hol01/fyp/flutter/studentappgraph/build/windows --check-stamp-file E:/homework/2022hol01/fyp/flutter/studentappgraph/build/windows/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
