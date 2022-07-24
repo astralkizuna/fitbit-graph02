@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:studentappgraph/fitgraph/FitHeart.dart';
 import 'package:studentappgraph/fitgraph/FitSleep.dart';
 import 'package:studentappgraph/fitgraph/FitStep.dart';
+import 'package:studentappgraph/fitgraph/FitWeight.dart';
 
 class dashboardPage extends StatefulWidget {
   const dashboardPage({Key? key}) : super(key: key);
@@ -59,6 +60,16 @@ class _dashboardPageState extends State<dashboardPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => FitSleepGraph(token: token)),
+                );
+              }
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              child: const Text("Weight Log"),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FitWeightGraph(token: token)),
                 );
               }
             ),

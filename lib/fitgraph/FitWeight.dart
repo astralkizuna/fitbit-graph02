@@ -16,8 +16,88 @@ class _FitWeightGraphState extends State<FitWeightGraph> {
   String token;
   _FitWeightGraphState(this.token);
   
+  List finalData = [];
+  List<ChartData> chartData = [];
+
+  Future dataReq() async {
+    var headers = {
+      "Authorization" : "Bearer $token"
+    };
+
+    var now = new DateTime.now();
+    var formatter = new DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(now);
+    var lastweek = now.subtract(Duration(days: 7));
+    String lastweekDate = formatter.format(lastweek);
+    print('date today : $formattedDate');
+    print('date last week : $lastweekDate');
+
+    var request = http.Request('GET', Uri.parse("https://api.fitbit.com/1/user/-/body/log/weight/date/2022-07-10/today.json"));
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+    final String responseData = await response.stream.bytesToString();
+    final data = await json.decode(responseData);
+
+    finalData = data["weight"];
+    //print(finalData);
+    for (Map<String, dynamic> i in finalData) {
+      chartData.add(ChartData.fromJson(i));
+    }
+
+    if (response.statusCode == 200) {  
+      print('responseData success');
+    }
+    else {
+        print(response.reasonPhrase);
+    }
+    return responseData;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Heart Rate'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: FutureBuilder(
+            future: dataReq(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {     
+                return SfCartesianChart(
+                  primaryXAxis: CategoryAxis(),
+                  series: <ChartSeries>[
+                    // Renders line chart
+                    LineSeries<ChartData, String>(
+                      dataSource: chartData,
+                      xValueMapper: (ChartData data, _) => data.date,
+                      yValueMapper: (ChartData data, _) => data.weight
+                    )
+                  ]
+                );
+              }
+              else{
+                return CircularProgressIndicator();
+              } 
+            }
+          )
+        )
+      )
+    );
+  }
+}
+
+class ChartData {
+  ChartData(this.date, this.weight);
+  final String date;
+  final int weight;
+
+  factory ChartData.fromJson(Map<String, dynamic> parsedJson) {
+    return ChartData(
+      parsedJson["date"].toString(),
+      parsedJson["weight"],
+    );
   }
 }
