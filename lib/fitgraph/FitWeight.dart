@@ -32,7 +32,7 @@ class _FitWeightGraphState extends State<FitWeightGraph> {
     print('date today : $formattedDate');
     print('date last week : $lastweekDate');
 
-    var request = http.Request('GET', Uri.parse("https://api.fitbit.com/1/user/-/body/log/weight/date/2022-07-10/today.json"));
+    var request = http.Request('GET', Uri.parse("https://api.fitbit.com/1/user/-/body/log/weight/date/2022-07-10/today.json")); //2022-07-10 change to $lastweekDate
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     final String responseData = await response.stream.bytesToString();
